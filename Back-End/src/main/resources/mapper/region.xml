@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.zip.region.model.mapper.RegionMapper">
+
+	<select id="regionList" parameterType="string" resultType="regionDto">
+		select region_code, address_name, local_name
+		from region
+		where local_name like concat(#{name}, '%')
+		order by address_name
+	</select>
+
+</mapper>

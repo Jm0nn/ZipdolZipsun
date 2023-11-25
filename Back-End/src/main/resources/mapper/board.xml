@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.zip.board.model.mapper.BoardMapper">
+
+	<insert id="writeArticle" parameterType="boardDto">
+		insert into board
+		(user_no, board_no, subject, content, article_type_no)
+		values(#{userNo},#{boardNo},#{subject},#{content},#{articleTypeNo})
+	</insert>
+
+	<sql id="search">
+		<where>
+			<if test="key != '' and word != ''">
+				<if test="key != 'articleNo'">
+					and ${key} like concat('%', #{word}, '%')
+				</if>
+				<if test="key == 'articleNo'">
+					and articleNo = #{word}
+				</if>
+			</if>
+		</where>
+	</sql>
+
+	<select id="listArticle" parameterType="map"
+		resultType="boardDto">
+		select
+			b.article_no, u.nick_name,
+			b.board_no, b.subject, b.content,
+			b.regist_time, b.hit, b.likes,
+			b.article_type_no, b.deleted
+		from board b
+		join user u on b.user_no = u.user_no
+		where b.board_no = ${boardNo}
+			and b.deleted = false
+		order by b.regist_time desc
+	</select>
+
+	<select id="getTotalArticleCount" parameterType="Map"
+		resultType="int">
+		select count(articleNo)
+		from board
+		<include refid="search" />
+	</select>
+
+	<select id="viewArticle" parameterType="int"
+		resultType="boardDto">
+		select
+			b.article_no, u.nick_name, b.board_no, b.subject,
+			b.content, b.regist_time, b.hit, b.likes,
+			b.article_type_no, b.deleted
+		from board b
+		join user u on b.user_no = u.user_no
+		where b.article_no = ${articleNo}
+	</select>
+
+	<update id="updateHit">
+		update board
+		set hit = hit + 1
+		where article_no =
+		${articleNo}
+	</update>
+
+	<update id="modifyArticle">
+		update board
+		set
+			subject = #{subject},
+			content = #{content},
+			board_no = #{boardNo},
+		article_type_no = #{articleTypeNo}
+		where article_no = ${articleNo}
+	</update>
+
+	<update id="deleteArticle">
+		update board
+		set deleted = true
+		where article_no = ${articleNo}
+	</update>
+	
+	<select id="searchList" parameterType="map" resultType="boardDto">
+		select b.article_no, u.nick_name,
+		b.board_no, b.subject, b.content,
+		b.regist_time, b.hit, b.likes,
+		b.article_type_no, b.deleted
+		from board b
+		join user u
+		on b.user_no =
+		u.user_no
+		where b.board_no = ${boardNo}
+		and b.deleted = false
+		<if test="nickName != ''">
+			and u.nick_name like #{nickName}
+		</if>
+		<if test="subject != ''">
+			and b.subject like concat('%', #{subject}, '%')
+		</if>
+		<if test="content != ''">
+			and b.content like concat('%', #{content}, '%')
+		</if>
+		order by b.regist_time desc
+	</select>
+
+</mapper>

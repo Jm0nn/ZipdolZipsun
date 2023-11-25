@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.zip.user.model.mapper.UserMapper">
+
+	<insert id="registUser" parameterType="userDto">
+		insert into user (user_id, user_name, user_pass, nick_name, sex, birth_date, email_id, email_domain, phone_number)
+		values (#{userId}, #{userName}, #{userPass},
+			#{nickName}, #{sex}, #{birthDate}, #{emailId}, #{emailDomain},
+			concat(#{phoneNumber1}, #{phoneNumber2}, #{phoneNumber3}))
+	</insert>
+	
+	<select id="loginUser" parameterType="userDto" resultType="userDto">
+		select user_no, user_id, nick_name, user_type_no
+		from user
+		where deleted = 0 and user_id = #{userId} and user_pass = #{userPass}
+	</select>
+	
+	<select id="idCheck" parameterType="string">
+		select count(user_id)
+		from user
+		where deleted = 0 and user_id = #{userId}
+	</select>
+	
+	<select id="nickNameCheck" parameterType="string">
+		select count(nick_name)
+		from user
+		where deleted = 0 and nick_name = #{nickName}
+	</select>
+	
+	<update id="modifyUser" parameterType="userDto">
+		update user
+		set
+			<if test="userPass != '' and userPass != null">
+				user_pass = #{userPass},
+			</if>
+			user_name = #{userName},
+			nick_name = #{nickName},
+			sex = #{sex},
+			birth_date = #{birthDate},
+			email_id = #{emailId},
+			email_domain = #{emailDomain},
+			phone_number = concat(#{phoneNumber1}, #{phoneNumber2}, #{phoneNumber3})
+		where user_no = #{userNo}
+	</update>
+	
+	<update id="deleteUser" parameterType="int">
+		update user
+		set deleted = 1,
+			user_id = '',
+			nick_name = ''
+		where user_no = #{userNo}
+	</update>
+	
+	<select id="listUser" resultType="userDto">
+		select u.user_no, u.user_id, u.user_name, u.nick_name, u.user_type_no, t.user_type_name, u.sex, u.birth_date, u.join_date, u.email_id, u.email_domain, u.phone_number
+		from user u
+		join user_type t on u.user_type_no = t.user_type_no
+		where u.deleted = 0
+		order by u.user_no desc
+	</select>
+	
+	<select id="userInfo" parameterType="int" resultType="userDto">
+		select u.user_no, u.user_id, u.user_pass, u.user_name, u.nick_name, u.user_type_no, t.user_type_name, u.sex, u.birth_date, u.join_date, u.email_id, u.email_domain, u.phone_number
+		from user u
+		join user_type t
+		on u.user_type_no = t.user_type_no
+		where u.deleted = 0 and user_no = #{userNo}
+	</select>
+	
+	<select id="getPass" parameterType="string">
+		select user_pass
+		from user
+		where user_Id = #{userId}
+			and deleted = 0
+	</select>
+
+</mapper>

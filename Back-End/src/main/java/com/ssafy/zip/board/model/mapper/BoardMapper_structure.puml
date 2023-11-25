@@ -1,0 +1,167 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.ssafy.zip.board.model.mapper.BoardMapper",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_109727380 { 
+   	label=ssafy
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_82814151 { 
+   	label=zip
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   BoardController1569490552[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BoardController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   boardService: BoardService [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ boardDelete(boardNo: String, articleNo: int): ResponseEntity&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ boardInfo(articleNo: int): ResponseEntity&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ boardModify(boardDto: BoardDto): ResponseEntity&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ boardWrite(boardDto: BoardDto, boardNo: String): ResponseEntity&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ list(boardNo: String): ResponseEntity&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ list(): ResponseEntity&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchList(map: Map&lt;String, String&gt;): ResponseEntity&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateHit(articleNo: int): ResponseEntity&lt;?&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BoardMapper1643582594[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(I)BoardMapper</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ deleteArticle(articleNo: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTotalArticleCount(param: Map&lt;String, Object&gt;): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ listArticle(boardNo: String): List&lt;BoardDto&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ modifyArticle(boardDto: BoardDto)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchList(map: Map&lt;String, String&gt;): List&lt;BoardDto&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateHit(articleNo: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ viewArticle(articleNo: int): BoardDto</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeArticle(boardDto: BoardDto)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#F1E5FD"
+];
+
+BoardServiceImpl558053524[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BoardServiceImpl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   boardMapper: BoardMapper [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ deleteArticle(articleNo: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ listArticle(boardNo: String): List&lt;BoardDto&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ modifyArticle(boardDto: BoardDto)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchList(map: Map&lt;String, String&gt;): List&lt;BoardDto&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateHit(articleNo: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ viewArticle(articleNo: int): BoardDto</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeArticle(boardDto: BoardDto)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+BoardController1569490552 -> BoardServiceImpl558053524[label="boardService
+[0..1]", arrowhead=none];
+BoardServiceImpl558053524 -> BoardMapper1643582594[label="boardMapper
+[0..1]"];
+    
+}
+@enduml

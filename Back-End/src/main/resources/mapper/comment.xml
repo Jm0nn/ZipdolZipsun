@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper
+	namespace="com.ssafy.zip.comment.model.mapper.CommentMapper">
+
+	<!-- 게시글에 해당되는 댓글 목록 출력 -->
+	<select id="list" parameterType="int" resultType="commentDto">
+		select
+		comment_no, article_no, nick_name, content, likes, regist_time
+		from comment
+		where
+		article_no = #{articleNo}
+		and deleted = 0
+		order by regist_time asc
+	</select>
+
+	<!-- 게시글에 댓글 등록 -->
+	<insert id="create" parameterType="commentDto">
+		insert into comment (article_no, nick_name, content)
+		values (#{articleNo}, #{nickName}, #{content})
+	</insert>
+
+	<!-- 게시글에 있는 댓글 수정 -->
+	<update id="modify" parameterType="commentDto">
+		update comment
+		set content = #{content}
+		where comment_no = #{commentNo}
+	</update>
+
+
+	<!-- 댓글 삭제 -->
+	<update id="delete" parameterType="int">
+		update comment
+		set deleted = 1
+		where comment_no = #{commentNo}
+	</update>
+
+
+</mapper>
