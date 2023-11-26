@@ -7,24 +7,31 @@
 
 ## 개요
   - SSAFY (삼성 청년 SW 아카데미) 10기 1학기 최종 웹 프로젝트
-  - 공공 데이터 등 외부 API를 사용하여 부동산 정보를 검색하고 공유할 수 있는 웹 어플리케이
+  - 공공 데이터 등 외부 API를 사용하여 부동산 정보를 검색하고 공유할 수 있는 웹 어플리케이션
   - 개발기간: 2023. 11. 16. ~ 2023. 11. 23.
+<br/>
+
+
+## 팀원 소개
+|팀장|팀원|
+|---|---|
+|[박민호](https://github.com/pmhmist)|[김정민](https://github.com/Jm0nn)|
 <br/>
 
 
 ## 기술 스택
   ![STS](https://img.shields.io/badge/sts-6db33f?style=for-the-badge&logo=spring&logoColor=white)
-  ![Spring-Boot](https://img.shields.io/badge/springboot-6db33f?style=for-the-badge&logo=springboot&logoColor=white)
+  ![Spring-Boot](https://img.shields.io/badge/spring%20boot-6db33f?style=for-the-badge&logo=springboot&logoColor=white)
   ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
   ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
   ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-  ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+  ![Vue.js](https://img.shields.io/badge/vue.js-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
   ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
   ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
   ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
   ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
   ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
-  ![Ant-Design](https://img.shields.io/badge/-AntDesign-%230170FE?style=for-the-badge&logo=ant-design&logoColor=white)
+  ![Ant-Design](https://img.shields.io/badge/-Ant%20Design-%230170FE?style=for-the-badge&logo=ant-design&logoColor=white)
   ![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
   <br>
 <br/>
@@ -81,9 +88,3 @@
   > #### User Controller
   > ![UserController_structure](https://github.com/Jm0nn/ZipdolZipsun/assets/139559227/d01d0b6a-f29a-4733-bdb2-6046393d2d2d)
 <br/>
-
-
-## 팀원 소개
-|팀장|팀원|
-|---|---|
-|박민호|[김정민](https://github.com/Jm0nn)|
