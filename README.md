@@ -1,7 +1,5 @@
 # 집돌집순
-<div align=center>
-<img src="https://github.com/Jm0nn/ZipdolZipsun/assets/139559227/289e1928-6427-4898-ab1a-bcc4aa221d76">
-</div>
+![main](https://github.com/Jm0nn/ZipdolZipsun/assets/139559227/af132028-fec9-4002-b359-6ab5171fbf95)
 <br/>
 
 
